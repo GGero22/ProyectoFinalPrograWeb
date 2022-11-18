@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ArrowLeftOutlinedIcon from '@mui/icons-material/ArrowLeftOutlined';
 import ArrowRightOutlinedIcon from '@mui/icons-material/ArrowRightOutlined';
 import {sliderItems} from "../data"
+import {mobile} from "../responsive.js"
 
 const Container = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ const Container = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
+    ${mobile({display: "none"})}
 `
 const Wrapper = styled.div`
     height: 100%;
@@ -54,7 +56,7 @@ const Button = styled.button`
 `
 
 const Arrow = styled.div`
-    widht: 50px;
+    width: 50px;
     height: 50px;
     background-color: #fff7f7;
     border-radius: 50%;
@@ -91,14 +93,14 @@ export const Slider = () => {
         <Wrapper slideIndex={slideIndex}>
             {sliderItems.map(item=>(
 
-                <Slide bg={item.bg}>
+                <Slide bg={item.bg} key={item.id} >
                     <ImgContainer>
                         <Image src={item.img}/>
                     </ImgContainer>
                     <InfoContainer>
                         <Title>{item.title}</Title>
                         <Desc>{item.desc}</Desc>
-                        <Button>SHOW NOW</Button>
+                        <Button>VER AHORA</Button>
                     </InfoContainer>
                 </Slide>
            ))}
